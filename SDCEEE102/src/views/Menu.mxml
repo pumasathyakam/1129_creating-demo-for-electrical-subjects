@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Menu" initialize="init()" gestureSwipe="handleSwipe(event)" >
+	
+	<fx:Script>
+		<![CDATA[
+			import spark.events.IndexChangeEvent;
+			
+			protected function myList_changeHandler(event:IndexChangeEvent):void {
+				navigator.pushView(views.GestureViewChange1,myList.selectedItem);
+			}
+			private function init():void
+			{
+				this.addEventListener( TransformGestureEvent.GESTURE_SWIPE, handleSwipe );  
+			}
+			
+			private function handleSwipe(event:TransformGestureEvent):void
+			{
+				// Swipe was to the right
+				if (event.offsetX == 1 ) {
+					// push the PreviousView without any data using default
+					// ViewTransition
+					navigator.pushView(GestureViewChange1 );
+				}
+					// Swipe was to the left
+				else if (event.offsetX == -1 ) {
+					// push the NextView withour any data using 
+					navigator.pushView(Menu);
+				}
+			}
+			
+	]]>
+	</fx:Script>
+	<s:BorderContainer borderColor="#99FF00" width="319" height="400" cornerRadius="5" borderWeight="3">
+		<s:Label text="Select a vegetable name"/>
+		<s:List id="myList"
+				width="100%" height="100%"
+				labelField="firstName"
+				change="myList_changeHandler(event)" color="#FFFAF0" 
+				alternatingItemColors="[#0099999,#990000]" >
+			<s:ArrayCollection>
+				<fx:Object firstName="1.Operation of PN junction diode" />
+				<fx:Object firstName="2.Operation of LED and Photodiode"/>
+				<fx:Object firstName="3.Operation of BJT in CB, CE and CC configurations"/>
+				<fx:Object firstName="4.BJT Amplifier action"/>
+				<fx:Object firstName="5.BJT Applications: Switch, Digital logic  "/>
+				<fx:Object firstName="6.Operation of MOSFET in CS, CD and CG configurations"/>
+				<fx:Object firstName="7.MOSFET Amplifier action"/>
+				<fx:Object firstName="8.MOSFET Applications: Inverter, digital logic"/>
+				<fx:Object firstName="9.Basic operation of JFET"/>
+				<fx:Object firstName="10.Multistage circuits using BJT and MOSFET"/>
+			</s:ArrayCollection>
+		</s:List>
+	</s:BorderContainer>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:ZoomViewTransition id="zoomTransition" duration="300"/>
+		
+	</fx:Declarations>
+		<s:navigationContent> 
+		
+		<s:Button icon="@Embed('assets/back.png')" 
+				  click="navigator.popView()" styleName="back"/> 
+	</s:navigationContent> 
+	
+</s:View>

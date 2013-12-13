@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+								  xmlns:s="library://ns.adobe.com/flex/spark" 
+								  applicationDPI="160" 
+								  initialize="view1_initializeHandler(event)" >  
+	<s:ViewNavigator label="Home" width="100%" height="100%" firstView="views.Home" icon="assets/home.png"/>
+	<s:ViewNavigator label="About Us" width="100%" height="100%" firstView="views.AboutUs" icon="assets/abouts.png"/>
+	<s:ViewNavigator label="Menu" width="100%" height="100%" firstView="views.Menu" icon="assets.sms.png"/>
+	<s:ViewNavigator label="Links" width="100%" height="100%" firstView="views.Links" icon="assets/mail.png"/>
+	
+	<fx:Style source="Styles.css"/>
+		<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+			s|Application
+			{
+				backgroundColor: #AAB2B7;
+				
+			}
+			
+			s|List
+				{
+					selectionColor:  #717070;
+					verticalScrollPolicy: auto;
+					horizontalScrollPolicy: auto;
+				}
+			
+		s|ActionBar
+		{
+			chromeColor: #224422;
+			titleAlign: left;
+			paddingBottom:0;
+			paddingTop:0;
+		}
+		
+		s|ActionBar #titleDisplay
+		{
+			color: white; paddingTop: 10;
+			fontSize: 26;
+			fontFamily: "Comic Sans MS";
+		}
+		
+		s|TabbedViewNavigator #tabBar 
+		{
+			chromeColor: #229988;
+			color: #CCCCCC;
+			fontFamily: "Comic Sans MS";
+			fontWeight:bold;
+			fontThickness:100;
+			iconPlacement:top;
+			textDecoration:none;
+			columnWidth: 2; paddingTop:0; 
+			paddingBottom:0;
+		}
+			
+	</fx:Style>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:ZoomViewTransition id="zoomTransition" duration="300"/>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			
+			import mx.events.FlexEvent;
+			import mx.events.FlexEvent;
+			
+			// Add the Gesture Event Handler to the screen.
+			protected function view1_initializeHandler(event:FlexEvent):void
+			{
+				Multitouch.inputMode = MultitouchInputMode.GESTURE;
+			}
+			
+		
+			// Add the hardware key event handlers to the stage.
+			protected function appCompleteHandler(event:FlexEvent):void {
+				stage.addEventListener("keyDown", handleButtons, false,1);
+				stage.addEventListener("keyUp", handleButtons, false, 1);
+			}
+			
+			// Event handler to handle hardware keyboard keys.
+			protected function handleButtons(event:KeyboardEvent):void
+			{
+				if (event.keyCode == Keyboard.HOME) {
+					// Handle Home button.
+				}
+				else if (event.keyCode == Keyboard.BACK) {
+					// Hanlde back button.
+				}
+			}
+		]]>
+	</fx:Script>
+	
+	 
+	
+</s:TabbedViewNavigatorApplication>
